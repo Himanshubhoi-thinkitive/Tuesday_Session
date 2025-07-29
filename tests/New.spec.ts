@@ -90,6 +90,14 @@ test('Add Provider User and Set Availability', async ({ page }) => {
   await page.getByRole('option', { name: ':00 AM (8 hrs)' }).click();
   await page.getByRole('checkbox', { name: 'Telehealth' }).check();
 
+   // Set appointment type and duration settings
+  await page.locator('form').filter({ hasText: 'Appointment TypeAppointment' }).getByLabel('Open').click();
+  await page.getByRole('option', { name: 'New Patient Visit' }).click();
+  await page.locator('form').filter({ hasText: 'DurationDuration' }).getByLabel('Open').click();
+  await page.getByRole('option', { name: '30 minutes' }).click();
+  await page.locator('form').filter({ hasText: 'Schedule NoticeSchedule Notice' }).getByLabel('Open').click();
+  await page.getByRole('option', { name: '1 Hours Away' }).click();
+
 
   // Save availability settings
   await page.getByRole('button', { name: 'Save' }).click();
